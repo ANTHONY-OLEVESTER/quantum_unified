@@ -177,6 +177,14 @@ function Pill({ children }) {
     return <span className="px-2.5 py-1 rounded-full bg-white/10 text-xs mr-2">{children}</span>;
 }
 
+function DOIBadge() {
+    return (
+        <div className="mt-6 pt-4 border-t border-white/5 text-center text-xs text-white/40">
+            DOI: <a href="https://doi.org/10.5281/zenodo.17497059" target="_blank" rel="noopener noreferrer" className="text-sky-400/60 hover:text-sky-300 underline">10.5281/zenodo.17497059</a>
+        </div>
+    );
+}
+
 function ActI() {
     const [angle, setAngle] = useState(0);
     const vo = useVoiceOver(VO_SCRIPTS[0], { autoStart:true, rate: 1.0 });
@@ -252,6 +260,7 @@ function ActI() {
         <VoiceoverControls vo={vo} />
       </div>
         </div>
+        <DOIBadge />
     );
 }
 function ActII() {
@@ -373,6 +382,7 @@ function ActII() {
                 </div>
             </div>
             <VoiceoverControls vo={vo} />
+            <DOIBadge />
         </div>
     );
 }
@@ -572,6 +582,7 @@ function ActIII({ pow, setPow, series, slope, currentD }) {
                 {mic && <span className="opacity-60">rms {rms.toFixed(2)}</span>}
             </div>
              <VoiceoverControls vo={vo} />
+             <DOIBadge />
         </div>
     );
 }
@@ -846,6 +857,7 @@ function ActIV() {
       >
         {assembled ? "Disperse" : "Prove"}
       </button>
+      <DOIBadge />
     </div>
   );
 }
@@ -1020,6 +1032,7 @@ function ActV() {
                 </div>
             </div>
              <VoiceoverControls vo={vo} />
+             <DOIBadge />
         </div>
     );
 }
@@ -1154,6 +1167,7 @@ function ActVI() {
                 {rewind ? "Play Forward" : "Rewind"}
             </button>
               <VoiceoverControls vo={vo} />
+              <DOIBadge />
         </div>
     );
 }
@@ -1161,10 +1175,17 @@ function ActVI() {
 function Footer() {
     return (
         <footer className="mt-8 border-t border-white/10">
-            <div className="max-w-6xl mx-auto px-4 py-6 text-xs text-white/60 flex flex-wrap items-center gap-3">
-                <span>© {new Date().getFullYear()} Curvature Information Demo</span>
-                <span className="hidden sm:inline">*</span>
-                <span>Display-only synthesis consistent with D^-1 concentration and alpha flatness narrative.</span>
+            <div className="max-w-6xl mx-auto px-4 py-6 text-xs text-white/60">
+                <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <span>© {new Date().getFullYear()} Curvature Information Demo</span>
+                    <span className="hidden sm:inline">*</span>
+                    <span>Display-only synthesis consistent with D^-1 concentration and alpha flatness narrative.</span>
+                </div>
+                <div className="text-xs text-white/50">
+                    Curvature–Information Principle © {new Date().getFullYear()} Anthony Olevester
+                    <span className="mx-2">•</span>
+                    DOI: <a href="https://doi.org/10.5281/zenodo.17497059" target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:text-sky-300 underline">10.5281/zenodo.17497059</a>
+                </div>
             </div>
         </footer>
     );
@@ -1240,6 +1261,7 @@ function ActVII() {
         {mic?"Mic: ON":"Mic: OFF"}
       </button>
       <VoiceoverControls vo={vo} compact />
+      <DOIBadge />
     </div>
   );
 }

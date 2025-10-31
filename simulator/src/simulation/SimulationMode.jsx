@@ -415,13 +415,18 @@ export default function SimulationMode({ onBackToStory }) {
 
       <footer className="border-t border-slate-900 mt-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-xs text-slate-500">
-          <div className="flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
             <span>Curvature–Information • Simulation toolkit</span>
             <div className="flex items-center gap-3">
               <a className="hover:text-slate-300" href="#abstract">Abstract</a>
               <a className="hover:text-slate-300" href="#results">Results</a>
               <a className="hover:text-slate-300" href="#reproduce">Reproduce</a>
             </div>
+          </div>
+          <div className="text-xs text-slate-600">
+            Curvature–Information Principle © {new Date().getFullYear()} Anthony Olevester
+            <span className="mx-2">•</span>
+            DOI: <a href="https://doi.org/10.5281/zenodo.17497059" target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300 underline">10.5281/zenodo.17497059</a>
           </div>
         </div>
       </footer>

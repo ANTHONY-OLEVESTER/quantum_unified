@@ -259,8 +259,8 @@ function ActI() {
             <div className="md:col-span-2">
         <VoiceoverControls vo={vo} />
       </div>
-        </div>
         <DOIBadge />
+        </div>
     );
 }
 function ActII() {

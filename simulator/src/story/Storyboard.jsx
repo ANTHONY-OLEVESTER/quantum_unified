@@ -125,31 +125,75 @@ export default function Storyboard() {
 }
 
 function Nav({ scene, setScene, autoPlay, setAutoPlay }) {
+    const goToPrev = () => setScene((scene - 1 + ACT_LABELS.length) % ACT_LABELS.length);
+    const goToNext = () => setScene((scene + 1) % ACT_LABELS.length);
+
     return (
         <div className="sticky top-0 z-30 backdrop-blur bg-black/70 border-b border-white/10">
-            <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center gap-3">
-                <span className="text-lg font-semibold tracking-wide">Curvature Information Principle</span>
-                <div className="hidden md:flex items-center gap-2 ml-6">
-                    {ACT_LABELS.map((label, idx) => (
-                        <button
-                            key={label}
-                            onClick={() => setScene(idx)}
-                            className={`text-sm px-3 py-1 rounded-full transition ${
-                                scene === idx ? "bg-white text-black" : "hover:bg-white/10"
-                            }`}
-                        >
-                            {label}
-                        </button>
-                    ))}
+            <div className="max-w-6xl mx-auto px-4 py-3">
+                {/* Desktop Layout */}
+                <div className="hidden md:flex items-center gap-3">
+                    <span className="text-lg font-semibold tracking-wide">Curvature Information Principle</span>
+                    <div className="flex items-center gap-2 ml-6">
+                        {ACT_LABELS.map((label, idx) => (
+                            <button
+                                key={label}
+                                onClick={() => setScene(idx)}
+                                className={`text-sm px-3 py-1 rounded-full transition ${
+                                    scene === idx ? "bg-white text-black" : "hover:bg-white/10"
+                                }`}
+                            >
+                                {label}
+                            </button>
+                        ))}
+                    </div>
+                    <button
+                        onClick={() => setAutoPlay((prev) => !prev)}
+                        className={`ml-auto text-xs px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 ${
+                            autoPlay ? "bg-white/10" : ""
+                        }`}
+                    >
+                        {autoPlay ? "Auto: ON" : "Auto: OFF"}
+                    </button>
                 </div>
-                <button
-                    onClick={() => setAutoPlay((prev) => !prev)}
-                    className={`ml-auto text-xs px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 ${
-                        autoPlay ? "bg-white/10" : ""
-                    }`}
-                >
-                    {autoPlay ? "Auto: ON" : "Auto: OFF"}
-                </button>
+
+                {/* Mobile Layout */}
+                <div className="flex md:hidden items-center gap-2">
+                    <button
+                        onClick={goToPrev}
+                        className="px-2 py-1.5 rounded-lg hover:bg-white/10 text-white/80"
+                        aria-label="Previous act"
+                    >
+                        ←
+                    </button>
+                    <select
+                        value={scene}
+                        onChange={(e) => setScene(Number(e.target.value))}
+                        className="flex-1 bg-black/50 border border-white/20 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:border-white/40"
+                    >
+                        {ACT_LABELS.map((label, idx) => (
+                            <option key={label} value={idx}>
+                                {label}
+                            </option>
+                        ))}
+                    </select>
+                    <button
+                        onClick={goToNext}
+                        className="px-2 py-1.5 rounded-lg hover:bg-white/10 text-white/80"
+                        aria-label="Next act"
+                    >
+                        →
+                    </button>
+                    <button
+                        onClick={() => setAutoPlay((prev) => !prev)}
+                        className={`text-xs px-2 py-1.5 rounded-lg border border-white/20 hover:bg-white/10 ${
+                            autoPlay ? "bg-white/10" : ""
+                        }`}
+                        aria-label="Toggle autoplay"
+                    >
+                        {autoPlay ? "⏸" : "▶"}
+                    </button>
+                </div>
             </div>
         </div>
     );

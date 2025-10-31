@@ -77,6 +77,7 @@ export default function Storyboard({ onEnterSimulation }) {
     const [scene, setScene] = useState(0);
     const [autoPlay, setAutoPlay] = useState(false);
     const [pow, setPow] = useState(7);
+    const [showNavHint, setShowNavHint] = useState(true);
 
     useEffect(() => {
         if (!autoPlay) {
@@ -95,7 +96,7 @@ export default function Storyboard({ onEnterSimulation }) {
 
     return (
         <div className="min-h-screen w-full overflow-x-hidden bg-black text-white font-sans">
-            <Nav scene={scene} setScene={setScene} autoPlay={autoPlay} setAutoPlay={setAutoPlay} onEnterSimulation={onEnterSimulation} />
+            <Nav scene={scene} setScene={setScene} autoPlay={autoPlay} setAutoPlay={setAutoPlay} onEnterSimulation={onEnterSimulation} showNavHint={showNavHint} setShowNavHint={setShowNavHint} />
             <main className="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
                 <Section visible={scene === 0}>
                     <ActI />
@@ -124,13 +125,26 @@ export default function Storyboard({ onEnterSimulation }) {
     );
 }
 
-function Nav({ scene, setScene, autoPlay, setAutoPlay, onEnterSimulation }) {
-    const goToPrev = () => setScene((scene - 1 + ACT_LABELS.length) % ACT_LABELS.length);
-    const goToNext = () => setScene((scene + 1) % ACT_LABELS.length);
+function Nav({ scene, setScene, autoPlay, setAutoPlay, onEnterSimulation, showNavHint, setShowNavHint }) {
+    const goToPrev = () => {
+        setScene((scene - 1 + ACT_LABELS.length) % ACT_LABELS.length);
+        if (showNavHint) setShowNavHint(false);
+    };
+    const goToNext = () => {
+        setScene((scene + 1) % ACT_LABELS.length);
+        if (showNavHint) setShowNavHint(false);
+    };
 
     return (
         <div className="sticky top-0 z-30 backdrop-blur bg-black/70 border-b border-white/10 w-full">
             <div className="max-w-6xl mx-auto px-3 sm:px-4 py-3">
+                {/* Navigation Hint */}
+                {showNavHint && scene === 0 && (
+                    <div className="mb-2 px-3 py-2 rounded-lg bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-xs flex items-center justify-between">
+                        <span>💡 Tip: Use the arrows (→) or dropdown to navigate between acts</span>
+                        <button onClick={() => setShowNavHint(false)} className="ml-2 text-indigo-300 hover:text-white">✕</button>
+                    </div>
+                )}
                 {/* Desktop Layout */}
                 <div className="hidden md:flex items-center gap-3">
                     <span className="text-lg font-semibold tracking-wide">Curvature Information Principle</span>
@@ -655,6 +669,7 @@ function ActIV() {
   // Cinematic theorem assembly: orbiting glyphs -> bezier converge -> snap to equation
   const canvasRef = useRef(null);
   const [assembled, setAssembled] = useState(false);
+  const [showHint, setShowHint] = useState(true);
   const vo = useVoiceOver(VO_SCRIPTS[3], { autoStart:true, rate: 1.0 });
 
   useEffect(() => {
@@ -907,7 +922,7 @@ function ActIV() {
     <div className="text-center">
       <h2 className="text-3xl font-bold">The Theorem</h2>
       <p className="text-white/75 mt-2">
-        Geometry, entropy, and dimension don’t just add up—&nbsp;
+        Geometry, entropy, and dimension don't just add up—&nbsp;
         <span className="text-teal-200">they converge</span>.
       </p>
 
@@ -915,12 +930,23 @@ function ActIV() {
         <canvas ref={canvasRef} className="w-full h-full" />
       </div>
 
-      <button
-        onClick={() => setAssembled(v => !v)}
-        className="mt-5 px-5 py-2 rounded-full border border-white/20 hover:bg-white/10 text-sm"
-      >
-        {assembled ? "Disperse" : "Prove"}
-      </button>
+      <div className="mt-5 space-y-3">
+        {showHint && !assembled && (
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-teal-500/20 border border-teal-400/30 text-teal-200 text-sm animate-pulse">
+            <span>👆 Press "Prove" to see the theorem assemble</span>
+          </div>
+        )}
+        <button
+          onClick={() => {
+            setAssembled(v => !v);
+            if (showHint) setShowHint(false);
+          }}
+          className="px-5 py-2 rounded-full border border-white/20 hover:bg-white/10 text-sm transition"
+        >
+          {assembled ? "Disperse" : "Prove"}
+        </button>
+      </div>
+      <VoiceoverControls vo={vo} />
       <DOIBadge />
     </div>
   );

@@ -12,6 +12,8 @@ Exports
 from __future__ import annotations
 import numpy as np
 
+__version__ = "0.0.1"
+
 EPS = 1e-12
 
 def _is_hermitian(x: np.ndarray, tol: float = 1e-8) -> bool:
@@ -90,9 +92,18 @@ def partial_trace_SE(rhoSE: np.ndarray, dims: tuple[int, int], subsystem: str) -
 
 def compute_Y_from_SE(rhoS: np.ndarray, rhoS_prime: np.ndarray, rhoSE_post: np.ndarray, dims: tuple[int, int]) -> float:
     """Compute Y using post-dilation joint state rhoSE_post to get Ibits."""
-    dS, dE = dims
     rhoS_post = partial_trace_SE(rhoSE_post, dims, 'E')
     rhoE_post = partial_trace_SE(rhoSE_post, dims, 'S')
     Ibits = mutual_information_bits(rhoS_post, rhoE_post, rhoSE_post)
     return compute_Y(rhoS, rhoS_prime, Ibits)
 
+__all__ = [
+    "__version__",
+    "bures_angle",
+    "effective_dimension",
+    "von_neumann_entropy_bits",
+    "mutual_information_bits",
+    "compute_Y",
+    "compute_Y_from_SE",
+    "partial_trace_SE",
+]

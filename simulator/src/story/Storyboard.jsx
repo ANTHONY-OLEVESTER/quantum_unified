@@ -257,9 +257,9 @@ function ActI() {
                 </motion.div>
             </div>
             <div className="md:col-span-2">
-        <VoiceoverControls vo={vo} />
-      </div>
-        <DOIBadge />
+                <VoiceoverControls vo={vo} />
+                <DOIBadge />
+            </div>
         </div>
     );
 }

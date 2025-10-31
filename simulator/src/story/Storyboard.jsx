@@ -73,7 +73,7 @@ function slopeCI(series) {
         hi: m + halfWidth,
     };
 }
-export default function Storyboard() {
+export default function Storyboard({ onEnterSimulation }) {
     const [scene, setScene] = useState(0);
     const [autoPlay, setAutoPlay] = useState(false);
     const [pow, setPow] = useState(7);
@@ -95,7 +95,7 @@ export default function Storyboard() {
 
     return (
         <div className="min-h-screen w-full bg-black text-white font-sans">
-            <Nav scene={scene} setScene={setScene} autoPlay={autoPlay} setAutoPlay={setAutoPlay} />
+            <Nav scene={scene} setScene={setScene} autoPlay={autoPlay} setAutoPlay={setAutoPlay} onEnterSimulation={onEnterSimulation} />
             <main className="max-w-6xl mx-auto px-4 pb-20">
                 <Section visible={scene === 0}>
                     <ActI />
@@ -124,7 +124,7 @@ export default function Storyboard() {
     );
 }
 
-function Nav({ scene, setScene, autoPlay, setAutoPlay }) {
+function Nav({ scene, setScene, autoPlay, setAutoPlay, onEnterSimulation }) {
     const goToPrev = () => setScene((scene - 1 + ACT_LABELS.length) % ACT_LABELS.length);
     const goToNext = () => setScene((scene + 1) % ACT_LABELS.length);
 
@@ -147,52 +147,72 @@ function Nav({ scene, setScene, autoPlay, setAutoPlay }) {
                             </button>
                         ))}
                     </div>
-                    <button
-                        onClick={() => setAutoPlay((prev) => !prev)}
-                        className={`ml-auto text-xs px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 ${
-                            autoPlay ? "bg-white/10" : ""
-                        }`}
-                    >
-                        {autoPlay ? "Auto: ON" : "Auto: OFF"}
-                    </button>
+                    <div className="ml-auto flex items-center gap-2">
+                        <button
+                            onClick={() => setAutoPlay((prev) => !prev)}
+                            className={`text-xs px-3 py-1.5 rounded-full border border-white/20 hover:bg-white/10 ${
+                                autoPlay ? "bg-white/10" : ""
+                            }`}
+                        >
+                            {autoPlay ? "Auto: ON" : "Auto: OFF"}
+                        </button>
+                        {onEnterSimulation && (
+                            <button
+                                onClick={onEnterSimulation}
+                                className="px-3 py-1.5 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium transition"
+                            >
+                                Simulation Mode
+                            </button>
+                        )}
+                    </div>
                 </div>
 
                 {/* Mobile Layout */}
-                <div className="flex md:hidden items-center gap-2">
-                    <button
-                        onClick={goToPrev}
-                        className="px-2 py-1.5 rounded-lg hover:bg-white/10 text-white/80"
-                        aria-label="Previous act"
-                    >
-                        ←
-                    </button>
-                    <select
-                        value={scene}
-                        onChange={(e) => setScene(Number(e.target.value))}
-                        className="flex-1 bg-black/50 border border-white/20 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:border-white/40"
-                    >
-                        {ACT_LABELS.map((label, idx) => (
-                            <option key={label} value={idx}>
-                                {label}
-                            </option>
-                        ))}
-                    </select>
-                    <button
-                        onClick={goToNext}
-                        className="px-2 py-1.5 rounded-lg hover:bg-white/10 text-white/80"
-                        aria-label="Next act"
-                    >
-                        →
-                    </button>
-                    <button
-                        onClick={() => setAutoPlay((prev) => !prev)}
-                        className={`text-xs px-2 py-1.5 rounded-lg border border-white/20 hover:bg-white/10 ${
-                            autoPlay ? "bg-white/10" : ""
-                        }`}
-                        aria-label="Toggle autoplay"
-                    >
-                        {autoPlay ? "⏸" : "▶"}
-                    </button>
+                <div className="md:hidden">
+                    <div className="flex items-center gap-2 mb-2">
+                        <button
+                            onClick={goToPrev}
+                            className="px-2 py-1.5 rounded-lg hover:bg-white/10 text-white/80"
+                            aria-label="Previous act"
+                        >
+                            ←
+                        </button>
+                        <select
+                            value={scene}
+                            onChange={(e) => setScene(Number(e.target.value))}
+                            className="flex-1 bg-black/50 border border-white/20 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:border-white/40"
+                        >
+                            {ACT_LABELS.map((label, idx) => (
+                                <option key={label} value={idx}>
+                                    {label}
+                                </option>
+                            ))}
+                        </select>
+                        <button
+                            onClick={goToNext}
+                            className="px-2 py-1.5 rounded-lg hover:bg-white/10 text-white/80"
+                            aria-label="Next act"
+                        >
+                            →
+                        </button>
+                        <button
+                            onClick={() => setAutoPlay((prev) => !prev)}
+                            className={`text-xs px-2 py-1.5 rounded-lg border border-white/20 hover:bg-white/10 ${
+                                autoPlay ? "bg-white/10" : ""
+                            }`}
+                            aria-label="Toggle autoplay"
+                        >
+                            {autoPlay ? "⏸" : "▶"}
+                        </button>
+                    </div>
+                    {onEnterSimulation && (
+                        <button
+                            onClick={onEnterSimulation}
+                            className="w-full px-3 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium transition"
+                        >
+                            Open Simulation Mode
+                        </button>
+                    )}
                 </div>
             </div>
         </div>

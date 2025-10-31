@@ -1,5 +1,6 @@
 ﻿# quantum-unified
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17497059.svg)](https://doi.org/10.5281/zenodo.17497059)
 [![PyPI](https://img.shields.io/pypi/v/quantum-unified.svg)](https://pypi.org/project/quantum-unified/)
 [![License](https://img.shields.io/badge/license-BSD--3--Clause-blue.svg)](LICENSE)
 

@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "quantum-unified"
-version = "0.0.1"
+version = "1.0.1"
 description = "Core utilities for the curvature–information invariant Y = sqrt(d_eff-1) * A^2 / I"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -33,6 +33,8 @@ classifiers = [
 Homepage = "https://github.com/ANTHONY-OLEVESTER/quantum_unified"
 Repository = "https://github.com/ANTHONY-OLEVESTER/quantum_unified"
 Issues = "https://github.com/ANTHONY-OLEVESTER/quantum_unified/issues"
+DOI = "https://doi.org/10.5281/zenodo.17497059"
+Documentation = "https://anthony-olevester.github.io/quantum_unified"
 
 [tool.hatch.build.targets.wheel]
 packages = ["quantum_unified"]

@@ -26,17 +26,17 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: quantum_Git_Repo/quantum_unified/simulator/package.json
+          cache-dependency-path: simulator/package.json
       - name: Install deps
-        working-directory: quantum_Git_Repo/quantum_unified/simulator
+        working-directory: simulator
         run: npm ci || npm install
       - name: Build
-        working-directory: quantum_Git_Repo/quantum_unified/simulator
+        working-directory: simulator
         run: npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: quantum_Git_Repo/quantum_unified/simulator/dist
+          path: simulator/dist
 
   deploy:
     needs: build

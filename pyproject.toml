@@ -1,4 +1,46 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
 
+[project]
+name = "quantum-unified"
+version = "0.0.1"
+description = "Core utilities for the curvature–information invariant Y = sqrt(d_eff-1) * A^2 / I"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Anthony Olevester", email = "olevester.joram123@gmail.com" }
+]
+dependencies = [
+  "numpy>=1.22"
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: BSD License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Physics",
+  "Topic :: Scientific/Engineering :: Information Analysis"
+]
+
+[project.urls]
+Homepage = "https://github.com/ANTHONY-OLEVESTER/quantum_unified"
+Repository = "https://github.com/ANTHONY-OLEVESTER/quantum_unified"
+Issues = "https://github.com/ANTHONY-OLEVESTER/quantum_unified/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["quantum_unified"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "quantum_unified",
+  "README.md",
+  "LICENSE",
+  "CHANGELOG.md"
+]

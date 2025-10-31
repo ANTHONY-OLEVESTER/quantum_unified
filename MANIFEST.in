@@ -1,6 +1,0 @@
-include pyproject.toml
-include setup.cfg
-include setup.py
-recursive-include quantum_unified *.py *.md
-global-exclude *.pyc __pycache__
-

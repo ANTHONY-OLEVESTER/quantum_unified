@@ -94,9 +94,9 @@ export default function Storyboard({ onEnterSimulation }) {
     const currentD = 2 ** pow;
 
     return (
-        <div className="min-h-screen w-full bg-black text-white font-sans">
+        <div className="min-h-screen w-full overflow-x-hidden bg-black text-white font-sans">
             <Nav scene={scene} setScene={setScene} autoPlay={autoPlay} setAutoPlay={setAutoPlay} onEnterSimulation={onEnterSimulation} />
-            <main className="max-w-6xl mx-auto px-4 pb-20">
+            <main className="max-w-6xl mx-auto px-4 sm:px-6 pb-20">
                 <Section visible={scene === 0}>
                     <ActI />
                 </Section>
@@ -129,8 +129,8 @@ function Nav({ scene, setScene, autoPlay, setAutoPlay, onEnterSimulation }) {
     const goToNext = () => setScene((scene + 1) % ACT_LABELS.length);
 
     return (
-        <div className="sticky top-0 z-30 backdrop-blur bg-black/70 border-b border-white/10">
-            <div className="max-w-6xl mx-auto px-4 py-3">
+        <div className="sticky top-0 z-30 backdrop-blur bg-black/70 border-b border-white/10 w-full">
+            <div className="max-w-6xl mx-auto px-3 sm:px-4 py-3">
                 {/* Desktop Layout */}
                 <div className="hidden md:flex items-center gap-3">
                     <span className="text-lg font-semibold tracking-wide">Curvature Information Principle</span>

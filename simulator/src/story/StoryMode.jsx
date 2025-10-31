@@ -7,7 +7,7 @@ export default function StoryMode({ onEnterSimulation }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen w-full overflow-x-hidden bg-black text-white">
       <Storyboard onEnterSimulation={onEnterSimulation} />
     </div>
   );

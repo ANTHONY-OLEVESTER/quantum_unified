@@ -1,4 +1,13 @@
-# Curvature–Information Invariant (Phases 1–3)
+# Curvature–Information Principle
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17497059.svg)](https://doi.org/10.5281/zenodo.17497059)
+
+**Author:** Anthony Olevester
+**Email:** olevester.joram123@gmail.com
+
+---
+
+## Curvature–Information Invariant (Phases 1–3)
 
 ## How to build the paper
 ```bash

@@ -1,7 +1,7 @@
 # Quantum Formula Project - Compilation Summary
 
 **Date:** November 1, 2025
-**Compiled by:** Claude AI Assistant
+**Author:** Anthony Olevester
 
 ---
 

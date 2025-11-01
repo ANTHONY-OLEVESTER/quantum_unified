@@ -1,0 +1,2 @@
+sampler,device,alpha_reg,fit,debias,Dmin,Dmax,points,alpha_Dmax_mean,alpha_Dmax_lo,alpha_Dmax_hi,pass_alpha_CI_zero,intercept_mu,intercept_lo,intercept_hi,pass_intercept_CI_zero,slope_mu,slope_lo,slope_hi,var_slope_mu,var_slope_lo,var_slope_hi
+haar,gpu,abs,wls,lodo,256,32768,8,0.28288110347949985,-0.5374465050698483,1.092238933134557,True,0.02656888653092605,-0.23120905846265807,0.36327038998119626,True,-36.76391473185315,-205.88733580040343,190.32617144250628,-0.9988960910233657,-1.003636062661953,-0.9945870575636843

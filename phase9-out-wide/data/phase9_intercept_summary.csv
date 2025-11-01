@@ -1,0 +1,2 @@
+mode,nS,Dmin,Dmax,points,alpha_Dmax_mean,alpha_Dmax_lo,alpha_Dmax_hi,intercept_mu,intercept_lo,intercept_hi,slope_mu,slope_lo,slope_hi,pass_alpha_CI_zero,pass_intercept_CI_zero
+haar-accelerated,1,256,8192,6,0.19969583946595876,-0.25077341709924206,0.6576709666269428,0.15402493508414875,0.05687771807197858,0.2393568810286168,26.855798722529034,-52.766455331417546,127.67706660714319,True,False

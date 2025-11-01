@@ -1,0 +1,3 @@
+Phase VI concentration summary (fast path)
+alpha intercept @ 1/D->0: +0.1735  (bootstrap CI [+0.0625,+0.3167])
+Var(Y) slope (log Var vs log D): -0.9872  (bootstrap CI [-0.9927,-0.9775])

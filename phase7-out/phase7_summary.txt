@@ -1,0 +1,5 @@
+Phase VII (Haar isometry) summary
+|alpha| vs 1/D intercept (OLS)   : +0.5602
+|alpha| vs 1/D intercept (boot)  : +0.5714  CI [+0.3947,+0.7477]
+Var(Y) vs D slope (OLS)          : -0.9993
+Var(Y) vs D slope (boot mean)    : -0.9990  CI [-1.0079,-0.9897]

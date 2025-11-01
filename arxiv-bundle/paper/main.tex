@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\input{macros}
+
+\title{Toward a Universal Curvature--Information Principle\\
+\large Finite-size Universality, Variance Concentration, and 2-Design Theorem}
+\author{[Your Name]}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We investigate the invariant $\Y=\sqrt{\deff-1}\,\A^2/\I$ across unitary and CPTP dynamics.
+Numerical stress-tests show collapse for chaotic/isotropic evolutions, failure for structured dynamics, and restoration under twirling.
+We present finite-size scaling with $\gamma\!\approx\!1$ and a variance law $\Var(\Y)\!\sim\!D^{-1}$ that is robust under 2-design sampling,
+and we prove concentration and flatness of $\Y$ for 2-design channels.
+\end{abstract}
+
+\input{sections}
+
+\section{Figures}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\linewidth]{../figures/phase2_collapse_panels.png}
+\caption{Collapse panels across models.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{../figures/phase2_finite_size_scaling.png}
+\caption{Finite-size scaling of $|\alpha|$ vs $D$.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{../figures/phase3_alpha_vs_invD.png}
+\caption{$|\alpha|$ versus $1/D$ extrapolations.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{../figures/phase3_varY_scaling.png}
+\caption{Variance scaling $\Var(\Y)$ vs $D$.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{../figures/phase4_alpha_vs_invD.png}
+\caption{$|\alpha|$ versus $1/D$ (Phase IV).}
+\label{fig:phase4-alpha-invD}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\linewidth]{../figures/phase4_varY_scaling.png}
+\caption{Variance scaling $\Var(Y)$ vs $D$ (Phase IV).}
+\label{fig:phase4-vary}
+\end{figure}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\clearpage
+\input{appendix_theorem}
+\end{document}

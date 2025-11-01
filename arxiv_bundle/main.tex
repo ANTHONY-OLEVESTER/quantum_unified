@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\input{macros}
+
+\title{A Universal Curvature--Information Principle:\\ Flatness and $\D^{-1}$ Concentration under 2-Designs}
+\author{Anthony Olevester\\ \small\texttt{olevester.joram123@gmail.com}}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study the invariant $\Y=\sqrt{\deff-1}\,\A^2/\I$ that couples Bures/Uhlmann geometry with mutual information.
+Across chaotic, structured, and twirled dynamics (Phases 0--9), numerics show flat signed-$\alpha$ at large $\D$ and a universal variance law $\Var(\Y)\propto \D^{-1}$. A 2-design theorem explains these rates: $\E[\Y]=Y_0+O(\D^{-1})$, $\Var(\Y)=\Theta(\D^{-1})$, and $\E[\alpha]\to 0$ with intercepts vanishing as $O(\D^{-1})$.
+\end{abstract}
+
+% Use figures path relative to paper/
+\graphicspath{{figures/}}
+
+\section{Introduction}
+We introduce the curvature--information invariant $\Y$, summarize prior results on random states/channels and Bures geometry, and motivate the two predictions: flatness of $\alpha$ and $\D^{-1}$ concentration of $\Y$. Asymptotically, Weingarten calculus and concentration of measure imply $\E[\Y]=Y_0+O(\D^{-1})$ and $\Var(\Y)=\Theta(\D^{-1})$ under unitary 2-design sampling.
+
+\paragraph{Related Work.}
+The geometric distance $\A$ traces back to Uhlmann fidelity and Bures geometry; monotone metrics characterize statistical distinguishability in quantum state space. Unitary designs connect random circuits and Haar typicality in finite depth, underpinning randomized benchmarking and twirling-based isotropization. Thermalization and Eigenstate Thermalization (ETH) provide a complementary narrative for universality in chaotic quantum systems. See, e.g., \cite{uhlmann1976,hubner1994,dittmann1999,weingarten,HaydenWinter2006,page1993,lubkin1978,dankert2009,brandao2016,magesan2012,harrowlow2009,dalessio2016}.
+
+\input{sections}
+
+\section{Figures}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.95\linewidth]{phase2_collapse_panels.png}
+\caption{Phase II: collapse panels across models (chaotic/isotropic flat, structured non-flat, twirl restores).}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\linewidth]{phase3_alpha_vs_invD.png}
+\caption{Phase III: $|\alpha|$ vs $1/\D$ finite-size drift.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\linewidth]{phase8_var_scaling.png}
+\caption{Phase VIII: $\log \Var(\Y)$ vs $\log \D$ with slope $\approx -1$.}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.75\linewidth]{phase9_varY_scaling.png}
+\caption{Phase IX: variance slope $\beta \approx -1$; signed-$\alpha$ CI includes 0 at largest $\D$.}
+\end{figure}
+
+\clearpage
+\input{appendix_theorem}
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}

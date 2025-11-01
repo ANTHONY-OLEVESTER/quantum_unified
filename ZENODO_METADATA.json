@@ -1,0 +1,63 @@
+{
+  "title": "Universal Curvature-Information Principle: Simulation Data and Code",
+  "upload_type": "dataset",
+  "description": "Complete simulation data, code, and analysis for the research paper 'A Universal Curvature-Information Principle: Flatness and D^(-1) Concentration under 2-Designs'. This archive contains Python code for computing quantum information-geometric invariants, data from 10 phases of numerical simulations, publication-quality figures, and LaTeX source for the manuscript. The work demonstrates universal scaling laws (Var(Y) ∝ D^(-1)) and flatness (α → 0) for the curvature-information invariant Y = sqrt(d_eff - 1) * A^2 / I across chaotic, structured, and twirled quantum dynamics.",
+  "creators": [
+    {
+      "name": "Olevester, Anthony",
+      "affiliation": "Independent Researcher",
+      "orcid": ""
+    }
+  ],
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "keywords": [
+    "quantum information",
+    "quantum geometry",
+    "Bures metric",
+    "Uhlmann fidelity",
+    "mutual information",
+    "effective dimension",
+    "unitary designs",
+    "quantum thermalization",
+    "concentration of measure",
+    "scaling laws",
+    "entanglement dynamics",
+    "information geometry",
+    "quantum chaos",
+    "2-design",
+    "Haar measure",
+    "quantum simulation"
+  ],
+  "subjects": [
+    {
+      "term": "Quantum Physics",
+      "identifier": "http://id.loc.gov/authorities/subjects/sh85109461"
+    },
+    {
+      "term": "Information Theory",
+      "identifier": "http://id.loc.gov/authorities/subjects/sh85066289"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "arXiv:[to be assigned]",
+      "resource_type": "publication-preprint",
+      "scheme": "arxiv"
+    }
+  ],
+  "contributors": [],
+  "references": [
+    "Uhlmann, A. (1976). The 'transition probability' in the state space of a ∗-algebra. Reports on Mathematical Physics, 9(2), 273-279.",
+    "Hübner, M. (1992). Explicit computation of the Bures distance for density matrices. Physics Letters A, 163(4), 239-242.",
+    "Page, D. N. (1993). Average entropy of a subsystem. Physical Review Letters, 71(9), 1291.",
+    "Dankert, C., et al. (2009). Exact and approximate unitary 2-designs. Physical Review A, 80(1), 012304.",
+    "Brandão, F. G., et al. (2016). Local random quantum circuits are approximate polynomial-designs. Communications in Mathematical Physics, 346(2), 397-434.",
+    "D'Alessio, L., et al. (2016). From quantum chaos and eigenstate thermalization to statistical mechanics. Advances in Physics, 65(3), 239-362."
+  ],
+  "version": "1.0",
+  "language": "eng",
+  "notes": "This archive contains all simulation code and data for reproducing the results in the paper. Excludes Python virtual environment (.venv) and auxiliary git repositories (quantum_Git_Repo). All simulations can be reproduced using Python 3.x with dependencies listed in requirement.txt.",
+  "method": "Numerical simulations using Python with NumPy, SciPy, and custom quantum state evolution libraries. Simulations sweep system dimensions D from 2 to 2^12, test multiple coupling types (dephasing, partial swap, random Hamiltonians), and compute information-geometric invariants over 10 phases of increasingly refined analysis."
+}

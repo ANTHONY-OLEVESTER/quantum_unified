@@ -1,0 +1,9 @@
+model,num_sizes,gamma,gamma_lo,gamma_hi,log_c,note
+random2body,8,-0.48760487994723545,-0.7968526776858627,-0.2724103674452763,-1.0840440698149596,fit on |alpha|
+pswap,8,-0.14713875647958985,-0.2699627226215314,-0.04142191974263369,-0.4542323811861759,fit on |alpha|
+dephasing,8,-0.3129949699785379,-0.5545241262127047,-0.09704373495411002,-0.7593707789626258,fit on |alpha|
+depolarizing,0,nan,nan,nan,nan,fit on |alpha|
+amp_damp_twirl0,0,nan,nan,nan,nan,fit on |alpha|
+amp_damp_twirl1,0,nan,nan,nan,nan,fit on |alpha|
+amp_damp_twirl3,0,nan,nan,nan,nan,fit on |alpha|
+amp_damp_twirl5,0,nan,nan,nan,nan,fit on |alpha|

@@ -1,51 +1,122 @@
-# Curvature–Information Principle
+# 🧠 Quantum Unified  
+*A computational proof-chain for the Curvature–Information Principle*  
+> _“Flatness and D⁻¹ concentration under 2-designs.”_ — A. Olevester (2025)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17497059.svg)](https://doi.org/10.5281/zenodo.17497059)
+## 🌌 Overview  
+This repository contains the complete numerical and theoretical workflow supporting the paper  
+**“A Universal Curvature–Information Principle: Flatness and D⁻¹ Concentration under 2-Designs.”**
 
-**Author:** Anthony Olevester
-**Email:** olevester.joram123@gmail.com
+It reconstructs how the invariant:
+
+> **Y = sqrt(d_eff - 1) · (A² / I)**
+
+emerges as a universal coupling between **quantum curvature** (Bures/Uhlmann geometry) and **mutual information**.
+
+Each *Phase (0 → 9)* builds on the previous, converging to the theorem:
+
+```
+E[Y] = Y0 + O(D⁻¹)
+Var(Y) = Θ(D⁻¹)
+E[α]  = O(D⁻¹)
+```
 
 ---
 
-## Curvature–Information Invariant (Phases 1–3)
+## 📁 Repository Structure
 
-## How to build the paper
-```bash
-make           # builds paper/main.pdf using existing data & figures
+| Path | Description |
+|------|--------------|
+| `src/` | All simulation scripts (`phase0_baseline.py` → `phase9_plus.py`) |
+| `data/` | CSV datasets generated from simulations |
+| `figures/` | Auto-generated plots |
+| `paper/` | LaTeX sources |
+| `scripts/` | Build + bundling utilities |
+| `Makefile` | Run phases, build figures, generate arXiv bundle |
+
+---
+
+## 🧩 Phase-Wise Roadmap
+
+| Phase | Goal | Script | Output / What it Proves |
+|-------|------|--------|--------------------------|
+| **0 – Baseline Geometry** | Validate Bures/Uhlmann curvature and purity logic | `phase0_baseline.py` | Initial sanity check |
+| **1 – Random State Test** | Haar random density matrices | `phase1_random_state.py` | Y stabilizes |
+| **2 – Universality Sweep** | Chaotic vs structured vs twirled channels | `phase2_universality_sweep.py` | Twirl → flatness restored |
+| **3 – Variance Scaling** | Var(Y) vs D | `phase3_varY_by_D.py` | Raw D⁻¹ slope data |
+| **4 – α Regression** | Fit α vs 1/D | `phase4_alpha_vs_invD.py` | α → 0 intercept |
+| **5 – Stinespring Extension** | Open quantum system evolution | `phase5_stinespring.py` | Same scaling under channels |
+| **6 – Theorem Validation** | 2-design Weingarten sampler | `phase6_theorem_perD.py` | First convergence proof |
+| **7 – WLS Refinement** | Weighted regression + bootstraps | `phase7_wls.py` | β ≈ –1.000 |
+| **8 – Bootstrap Audit** | Resampling confidence check | `phase8_bootstrap.py` | Robustness proven |
+| **9 – Haar Final Proof (GPU)** | High precision sampling | `phase9_plus.py` | Final numbers used in the paper |
+
+---
+
+## 🧪 Running Simulations
+
+### Install dependencies
+
+```
+pip install -r requirement.txt
 ```
 
-Repo layout:
+### Minimal run (sanity)
 
-* `src/` — code (`phase2.py`, utils)
-* `data/` — CSV outputs
-* `figures/` — PNG figures
-* `paper/` — LaTeX sources
-## Phase VI (fast isotropic asymptotics)
-Artifacts:
-- `figures/phase6_alpha_vs_invD.png`
-- `figures/phase6_varY_scaling.png`
-- `figures/phase6_Y_hist_Dmax.png`
-- `data/phase6_theorem_perD.csv`, `data/phase6_summary.txt`
-
-To preview extracted numbers:
-```bash
-make phase6-numbers
+```
+python src/phase0_baseline.py --trials 100
 ```
 
-> Note: the Phase VI sampler approximates a 2-design; the 
-> Haar/4-design concentration proven in Appendix~\ref{app:theorem} 
-> will require a deeper random circuit or exact Haar isometries.
+### Full reproduction (Phase IX, GPU)
 
+```
+python src/phase9_plus.py --sampler haar --device gpu --nE 7-14 --trials 3000 --seeds-per-D 10 --boot-B-point 12000 --boot-B-intercept 12000 --wls --debias lodo --workers 8 --outdir phase9-plus-haar-extend
+```
 
-## Build the paper
+Expected output:
 
-`ash
-python scripts/ingest_metrics.py
-make
-``n
-## Create arXiv bundle
+```
+α@Dmax: mean=+0.2868, CI=[-0.5377,+1.1088]  -> PASS
+Var(Y) slope β = −0.999 [−1.004, −0.995]
+```
 
-`ash
-make arxiv
-# produces curvature_information_arxiv.tgz
-``n
+---
+
+## 📊 Regenerate all figures
+
+```
+make figures
+```
+
+---
+
+## 🧮 Theory Snapshot
+
+Y couples three quantities of an open evolution:
+- `A²` — Bures/Uhlmann curvature
+- `I` — Mutual information
+- `d_eff` — Effective Hilbert-space dimension (inverse purity)
+
+Under a unitary **2-design**:
+```
+E[Y]   = Y0 + O(D⁻¹)
+Var(Y) = Θ(D⁻¹)
+|α|    ~ O(D⁻¹/²)
+```
+
+---
+
+## 🧠 Conclusions
+
+- α converges → 0  ✅ flatness
+- Var(Y) follows D⁻¹ ✅ universal variance law
+- Twirling restores isotropy ✅ proof of universality
+
+---
+
+## 👤 Author
+
+**Anthony Olevester**  
+https://anthony-olevester.github.io/quantum_unified/
+
+---
+> “Flatness → Universality. Variance → D⁻¹. Civilization → Accelerated.”

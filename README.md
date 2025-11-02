@@ -2,6 +2,11 @@
 *A computational proof-chain for the Curvature–Information Principle*  
 > _“Flatness and D⁻¹ concentration under 2-designs.”_ — A. Olevester (2025)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17497059.svg)](https://doi.org/10.5281/zenodo.17497059)
+[![PyPI version](https://badge.fury.io/py/quantum-unified.svg)](https://pypi.org/project/quantum-unified/)
+
+---
+
 ## 🌌 Overview  
 This repository contains the complete numerical and theoretical workflow supporting the paper  
 **“A Universal Curvature–Information Principle: Flatness and D⁻¹ Concentration under 2-Designs.”**
@@ -113,10 +118,26 @@ Var(Y) = Θ(D⁻¹)
 
 ---
 
+## 📚 Citation
+If you use this repository or data:
+
+```
+@article{Olevester2025CurvatureInformation,
+  author  = {Anthony Olevester},
+  title   = {A Universal Curvature–Information Principle: Flatness and D⁻¹ Concentration under 2-Designs},
+  year    = {2025},
+  doi     = {10.5281/zenodo.17497059},
+  note    = {https://pypi.org/project/quantum-unified/}
+}
+```
+
+---
+
 ## 👤 Author
 
 **Anthony Olevester**  
-https://anthony-olevester.github.io/quantum_unified/
+📧 olevester.joram123@gmail.com  
+🌐 [https://anthony-olevester.github.io/quantum_unified](https://anthony-olevester.github.io/quantum_unified)
 
 ---
 > “Flatness → Universality. Variance → D⁻¹. Civilization → Accelerated.”
